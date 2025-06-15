@@ -29,6 +29,6 @@ public void login() throws InterruptedException {
 	obj.enterPassword("Kibbcom12");
 	obj.clickLoginButton();
 	trip.clickTrip();
-	trip.ClickCheckBox();
+	//trip.ClickCheckBox();
 }
 }
