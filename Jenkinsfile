@@ -15,7 +15,8 @@ pipeline {
 
         stage('Build and Run Tests') {
             steps {
-                bat 'mvn clean test'  // Windows-specific command
+               bat 'C:\\Windows\\System32\\cmd.exe /c mvn clean test'
+ // Windows-specific command
             }
         }
 
