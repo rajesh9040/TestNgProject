@@ -21,13 +21,12 @@ pipeline {
 
         stage('Publish Extent Report') {
             steps {
-                publishHTML([
-                    reportDir: 'test-output/ExtentReports',
-                    reportFiles: 'index.html',
-                    reportName: 'Extent Report',
-                    keepAll: true,
-                    alwaysLinkToLastBuild: true
-                ])
+               publishHTML([
+  reportDir: 'target/surefire-reports',
+  reportFiles: 'index.html',
+  reportName: 'Test Report'
+])
+
             }
         }
     }
