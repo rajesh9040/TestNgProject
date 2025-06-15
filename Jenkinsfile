@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.9'  // Make sure this name matches the Maven version you configured in Jenkins (Manage Jenkins > Global Tool Configuration)
-        jdk 'JDK 17'         // Same for JDK
+        maven 'Maven 3.9.9'  
+        jdk 'JDK 17'         
     }
 
     stages {
@@ -13,23 +13,16 @@ pipeline {
             }
         }
 
-      stage('Build and Run Tests') {
-    steps {
-        script {
-            if (isUnix()) {
-                sh 'mvn clean test'
-            } else {
+        stage('Build and Run Tests') {
+            steps {
                 bat 'mvn clean test'
             }
         }
-    }
-}
-
 
         stage('Publish Extent Report') {
             steps {
                 publishHTML([
-                    reportDir: 'test-output/ExtentReports', // Ensure this path is correct after test run
+                    reportDir: 'test-output/ExtentReports',
                     reportFiles: 'index.html',
                     reportName: 'Extent Report',
                     keepAll: true,
