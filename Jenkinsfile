@@ -13,12 +13,18 @@ pipeline {
             }
         }
 
-        stage('Build and Run Tests') {
-            steps {
-               bat 'C:\\Windows\\System32\\cmd.exe /c mvn clean test'
- // Windows-specific command
+      stage('Build and Run Tests') {
+    steps {
+        script {
+            if (isUnix()) {
+                sh 'mvn clean test'
+            } else {
+                bat 'mvn clean test'
             }
         }
+    }
+}
+
 
         stage('Publish Extent Report') {
             steps {
